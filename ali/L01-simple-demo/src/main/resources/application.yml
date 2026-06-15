@@ -10,8 +10,9 @@ spring:
           # model: THUDM/GLM-Z1-9B-0414
           # model: THUDM/GLM-4-9B-0414
           # model: THUDM/glm-4-9b-chat # 不支持工具调用
-          model: Qwen/Qwen2.5-7B-Instruct
-          # model: Qwen/Qwen3-8B
+          # model: Qwen/Qwen2.5-7B-Instruct
+#           model: Qwen/Qwen3-8B
+          model: Qwen/Qwen3.5-4B
       base-url: https://api.siliconflow.cn
 
 server:
