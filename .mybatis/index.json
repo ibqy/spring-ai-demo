@@ -1,0 +1,127 @@
+{
+  "version": "1.0",
+  "timestamp": 1785135905511,
+  "projectRoot": "e:\\ideaProject\\spring-ai-demo",
+  "entries": [
+    {
+      "path": "S20-manual-tool-execute\\target\\classes\\com\\git\\hui\\springai\\S20Application.class",
+      "mtime": 1785135863248.6277,
+      "size": 788
+    },
+    {
+      "path": "S17-reasoncontent\\target\\classes\\com\\git\\hui\\ai\\app\\S17Application.class",
+      "mtime": 1785135866019.7913,
+      "size": 734
+    },
+    {
+      "path": "S13-mcp-client-chat\\target\\classes\\com\\git\\hui\\springai\\app\\S13Application.class",
+      "mtime": 1785135866822.6042,
+      "size": 746
+    },
+    {
+      "path": "S11-image-model\\target\\classes\\com\\git\\hui\\springai\\S11Application.class",
+      "mtime": 1785135867899.25,
+      "size": 738
+    },
+    {
+      "path": "S09-chat-client\\target\\classes\\com\\git\\hui\\springai\\S09Application.class",
+      "mtime": 1785135869500.108,
+      "size": 738
+    },
+    {
+      "path": "S08-mcp-server-basic-auth\\target\\classes\\com\\git\\hui\\offer\\service\\ToolConfig.class",
+      "mtime": 1785135869992.9773,
+      "size": 1227
+    },
+    {
+      "path": "S05-self-model\\target\\classes\\com\\git\\hui\\offer\\S05Application.class",
+      "mtime": 1785135871542.8076,
+      "size": 732
+    },
+    {
+      "path": "ali\\L08-multi-agent-supervisor\\target\\classes\\com\\git\\hui\\springai\\ali\\L08Application.class",
+      "mtime": 1785135873063.8176,
+      "size": 3689
+    },
+    {
+      "path": "ali\\L06-multi-agent-paralle\\target\\classes\\com\\git\\hui\\springai\\ali\\L06Application.class",
+      "mtime": 1785135875097.684,
+      "size": 3666
+    },
+    {
+      "path": "ali\\L05-multi-agent-sequence\\target\\classes\\com\\git\\hui\\springai\\ali\\L05Application.class",
+      "mtime": 1785135875739.578,
+      "size": 3677
+    },
+    {
+      "path": "ali\\L04-handsoff\\target\\classes\\com\\git\\hui\\springai\\ali\\express\\StepConfigInterceptor$StepConfig.class",
+      "mtime": 1785135876188.0195,
+      "size": 2203
+    },
+    {
+      "path": "ali\\L02-human-in-loop\\target\\classes\\com\\git\\hui\\springai\\ali\\L02Application.class",
+      "mtime": 1785135876765.6558,
+      "size": 998
+    },
+    {
+      "path": "app-projects\\D05-rag-qa-bot\\target\\classes\\com\\git\\hui\\springai\\app\\D05Application.class",
+      "mtime": 1785135878944.3003,
+      "size": 2207
+    },
+    {
+      "path": "app-projects\\D03-text-address-extraction\\target\\classes\\com\\git\\hui\\springai\\app\\D03Application.class",
+      "mtime": 1785135884089.8198,
+      "size": 971
+    },
+    {
+      "path": "app-projects\\D02-img-text-card-gen-agent\\target\\classes\\com\\git\\hui\\springai\\app\\D02Application.class",
+      "mtime": 1785135889048.119,
+      "size": 746
+    },
+    {
+      "path": "advance-projects\\A02-memory-jdbc-h2\\target\\classes\\com\\git\\hui\\springai\\advance\\config\\MemConfig.class",
+      "mtime": 1785135892261.9827,
+      "size": 2204
+    },
+    {
+      "path": "app-projects\\D04-invoice-extraction\\target\\classes\\com\\git\\hui\\springai\\app\\D04Application.class",
+      "mtime": 1785135895384.1204,
+      "size": 971
+    },
+    {
+      "path": "ali\\L01-simple-demo\\target\\classes\\com\\git\\hui\\springai\\ali\\L01Application.class",
+      "mtime": 1785135897032.7063,
+      "size": 746
+    },
+    {
+      "path": "ali\\L03-skill-creator\\target\\classes\\com\\git\\hui\\springai\\ali\\L03Application.class",
+      "mtime": 1785135897709.0793,
+      "size": 7086
+    },
+    {
+      "path": "S03-structured-output\\target\\classes\\com\\git\\hui\\springai\\S03Application.class",
+      "mtime": 1785135899293.9426,
+      "size": 738
+    },
+    {
+      "path": "S06-function-tool\\target\\classes\\com\\git\\hui\\offer\\S06Application.class",
+      "mtime": 1785135900306.4397,
+      "size": 732
+    },
+    {
+      "path": "S19-audio-transaction\\target\\classes\\com\\git\\hui\\springai\\S19Application.class",
+      "mtime": 1785135901872.635,
+      "size": 2766
+    },
+    {
+      "path": "S16-stream-call\\target\\classes\\com\\git\\hui\\ai\\app\\S16Application.class",
+      "mtime": 1785135902566.1128,
+      "size": 734
+    },
+    {
+      "path": "ali\\L07-multi-agent-route\\target\\classes\\com\\git\\hui\\springai\\ali\\L07Application.class",
+      "mtime": 1785135904940.898,
+      "size": 3676
+    }
+  ]
+}

@@ -60,7 +60,8 @@ public class ChatController {
                 ZhiPuAiChatOptions.builder()
                         .model(ZhiPuAiApi.ChatModel.GLM_4_Flash.getValue())
                         .temperature(0.7d)
-                        .user("一灰灰")
+                        // user 用于标识调用方身份；长度需在 6~128 字符之间，否则智谱返回 1214 错误
+                        .user("user_yihuihui")
                         .build()
         );
 
@@ -71,11 +72,11 @@ public class ChatController {
     @GetMapping("/ai/childGenerate")
     public Map childJokeGenerate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         Prompt prompt = new Prompt(
-                Arrays.asList(new SystemMessage("你现在是一个专注于给3-5岁儿童聊天的助手"), new UserMessage(message)),
+                Arrays.asList(new SystemMessage("你现在是一个专注于给3-5岁儿童聊天的助手，用中文回答"), new UserMessage(message)),
                 ZhiPuAiChatOptions.builder()
                         .model(ZhiPuAiApi.ChatModel.GLM_4_Flash.getValue())
                         .temperature(0.7d)
-                        .user("一灰灰")
+                        .user("user_yihuihui")
                         .build()
         );
         Generation generation = chatModel.call(prompt).getResult();
@@ -99,6 +100,36 @@ public class ChatController {
         return generation == null ? "" : generation.getOutput().getText();
     }
 
+    /**
+     * roleChatV2 与 roleChat 的区别在于：自定义了 PromptTemplate 的占位符分隔符。
+     * <p>
+     * PromptTemplate 默认使用 {变量名} 形式的占位符（如 {personality}），
+     * 但当模板文本本身就需要包含大量花括号（如 JSON、代码片段）时，默认占位符会产生歧义。
+     * 因此这里通过 StTemplateRenderer 自定义为 <变量名> 的形式来规避冲突。
+     * <p>
+     * 关键点说明：
+     * 1. StTemplateRenderer.builder()
+     *    .startDelimiterToken('<')：设置占位符起始分隔符为 '<'
+     *    .endDelimiterToken('>')：设置占位符结束分隔符为 '>'
+     *    这样模板中的 <personality>、<aiRole>、<myRole> 即为占位符，
+     *    而 {personality} 这种写法将不再被解析，可安全出现在模板正文中。
+     * 2. PromptTemplate.builder().renderer(...).template(...).build()
+     *    采用构建者模式组装模板：先指定渲染器（renderer），再指定模板文本（template）。
+     * 3. promptTemplate.render(Map.of(...))
+     *    传入参数键值对，将模板中的占位符替换为实际值，得到最终的 System 提示文本。
+     * 4. new Prompt(new SystemMessage(text), new UserMessage(msg))
+     *    将渲染后的文本包装为 SystemMessage（设定 AI 角色与场景），
+     *    再叠加 UserMessage（用户实际发言），组成一个完整的 Prompt。
+     * <p>
+     * 对比 roleChat（V1）：V1 使用 SystemPromptTemplate（默认 { } 占位符），
+     * V2 使用 PromptTemplate + StTemplateRenderer（自定义 < > 占位符），更灵活、可避免歧义。
+     *
+     * @param personality 角色性格，如 "温柔"
+     * @param aiRole      AI 扮演的角色，如 "女朋友"
+     * @param myRole      用户扮演的角色，如 "男朋友"
+     * @param msg         用户实际发送的消息
+     * @return AI 生成的回复文本
+     */
     @GetMapping(path = "/ai/roleChatV2")
     public String roleChatV2(@RequestParam(value = "personality", defaultValue = "温柔") String personality,
                              @RequestParam(value = "aiRole", defaultValue = "女朋友") String aiRole,
@@ -106,7 +137,7 @@ public class ChatController {
                              @RequestParam(value = "msg", defaultValue = "最近心情不好") String msg) {
         PromptTemplate promptTemplate = PromptTemplate.builder().renderer(StTemplateRenderer.builder()
                         .startDelimiterToken('<').endDelimiterToken('>').build())
-                .template("我们现在开始角色扮演的对话，你来扮演{personality}的{aiRole}, 我来扮演{myRole}")
+                .template("我们现在开始角色扮演的对话，你来扮演<personality>的<aiRole>, 我来扮演<myRole>")
                 .build();
         String text = promptTemplate.render(Map.of("personality", personality, "aiRole", aiRole, "myRole", myRole));
         Prompt prompt = new Prompt(new SystemMessage(text), new UserMessage(msg));
